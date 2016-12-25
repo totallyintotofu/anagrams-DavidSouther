@@ -30,6 +30,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 
 public class AnagramDictionary {
@@ -59,7 +60,7 @@ public class AnagramDictionary {
         return true;
     }
 
-    public ArrayList<String> getAnagrams(String targetWord) {
+    public List<String> getAnagrams(String targetWord) {
         ArrayList<String> result = new ArrayList<String>();
         //
         // Your code here
@@ -84,7 +85,7 @@ public class AnagramDictionary {
         return "";
     }
 
-    public ArrayList<String> getAnagramsWithOneMoreLetter(String word) {
+    public List<String> getAnagramsWithOneMoreLetter(String word) {
         ArrayList<String> result = new ArrayList<String>();
         //
         // Your code here

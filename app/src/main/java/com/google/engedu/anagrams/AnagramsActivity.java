@@ -38,6 +38,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class AnagramsActivity extends AppCompatActivity {
@@ -45,7 +46,7 @@ public class AnagramsActivity extends AppCompatActivity {
     public static final String START_MESSAGE = "Find as many words as possible that can be formed by adding one letter to <big>%s</big> (but that do not contain the substring %s).";
     private AnagramDictionary dictionary;
     private String currentWord;
-    private ArrayList<String> anagrams;
+    private List<String> anagrams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
