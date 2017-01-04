@@ -19,6 +19,7 @@ package com.google.engedu.anagrams;
 import android.support.annotation.VisibleForTesting;
 import android.text.TextUtils;
 
+import org.w3c.dom.ProcessingInstruction;
 import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
@@ -41,56 +42,66 @@ public class AnagramDictionary {
     private Random random = new Random();
 
     private HashMap<String, ArrayList<String>> lettersToWord = new HashMap<>();
-
+    private  List <String> words = new ArrayList<>();
     public AnagramDictionary(InputStream wordListStream) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(wordListStream));
         String line;
-        while((line = in.readLine()) != null) {
+        while((line = in.readLine()) != null)
+        {
             String word = line.trim();
-            //
-            //  Your code here
-            //
+            words.add(word);
+
         }
+
     }
 
-    public boolean isGoodWord(String word, String base) {
-        //
-        // Your code here
-        //
-        return true;
+    //word contains base, but word itself isn't base (same word)
+    public boolean isGoodWord(String word, String base)
+    {
+
+        if (base.equals(word))
+        {
+          return false;
+        }
+        return isAnagram(word.toUpperCase(), base.toUpperCase());
     }
 
+    //returns all possible anagrams of a word
+    //goes through every word in the masterlist, if the word inputted is a work in the master
     public List<String> getAnagrams(String targetWord) {
         ArrayList<String> result = new ArrayList<String>();
-        //
-        // Your code here
-        //
+
+        for (String word: words)
+        {
+            if(isAnagram(word, targetWord))
+            {
+                result.add(word);
+            }
+        }
         return result;
     }
 
+    //same letters
     @VisibleForTesting
     static boolean isAnagram(String first, String second) {
-        //
-        // Your code here
-        //
-        return true;
+         return sortLetters(first).equals(sortLetters(second));
     }
 
     @VisibleForTesting
-    static String sortLetters(String input) {
+    static String sortLetters(String input)
+    {
         char[] chars = input.toCharArray();
-        //
-        // Your code here
-        //
-        return "";
+
+        Arrays.sort(chars);
+        return new String(chars);
     }
 
     public List<String> getAnagramsWithOneMoreLetter(String word) {
         ArrayList<String> result = new ArrayList<String>();
         //
-        // Your code here
+
         //
-        return result;
+        return getAnagrams(word);
     }
 
     public String pickGoodStarterWord() {
